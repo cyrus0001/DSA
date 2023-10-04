@@ -1,0 +1,50 @@
+
+int partition( vector<int>& arr,, int s, int e) {
+
+    int pivot = arr[s];
+
+    int cnt = 0;
+    for(int i = s+1; i<=e; i++) {
+        if(arr[i] <=pivot) {
+            cnt++;
+        }
+    }
+
+    int pivot_Index = s + cnt;
+    swap(arr[pivot_Index], arr[s]);
+
+    int m= s, n = e;
+
+    while(m < pivot_Index && n > pivot_Index) {
+
+        while(arr[m] <= pivot) 
+        {
+            m++;
+        }
+
+        while(arr[n] > pivot) {
+            n--;
+        }
+
+        if(m < pivot_Index && n > pivot_Index) {
+            swap(arr[m++], arr[n--]);
+        }
+
+    }
+
+    return pivot_Index;
+
+}
+
+void quickSort(vector<int>& arr, int s, int e) {
+
+    if(s >= e) 
+        return ;
+
+    int p = partition(arr, s, e);
+    //For left side part of the partition
+    quickSort(arr, s, p-1);
+    //For right side part of the partition
+    quickSort(arr, p+1, e);
+
+}
