@@ -4,6 +4,16 @@
             ans.push_back(output);
             return ;
         }
+//Do not print empty array then 
+/*     
+        if ( index >= nums.size()){
+            if(output.size()>0){
+                ans.push_back(output);
+            }
+            return ;
+        }
+*/
+        
         solve(nums,output,index+1,ans);
         int element = nums[index];
         output.push_back(element);
