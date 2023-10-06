@@ -1,0 +1,32 @@
+
+    bool shouldSwap(vector<int>& nums, int start, int curr){
+        for (int i = start; i < curr ; i++) {
+            if (nums[i] == nums[curr]){
+                return 0 ;
+            }
+        }
+        return 1;
+    }
+
+    void proPermutation(vector<int>& nums,vector<vector<int>>& ans,int index){
+        if (index >= nums.size()){
+            if(nums.size()>0){
+                ans.push_back(nums);
+                return ;
+            }
+        }
+        for(int i = index; i< nums.size();i++){
+            if(shouldSwap(nums,index,i)){
+                swap(nums[index],nums[i]);
+                proPermutation(nums,ans,index+1);
+                swap(nums[index],nums[i]);
+            }
+        }
+    }
+
+    vector<vector<int>> permuteUnique(vector<int>& nums) {
+        vector<vector<int>> ans;
+        proPermutation(nums,ans,0);
+        return ans;
+     
+    }
