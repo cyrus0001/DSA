@@ -1,0 +1,55 @@
+
+int merge(vector<int>& arr , int start , int last){
+    vector(int> temp;
+
+    int left = start;
+    int mid = ( start + last )/2;
+    int right = mid + 1;
+
+    int inv_cnt = 0 ;
+
+    while( left <= mid && right <= last){
+        if ( arr[left] <= arr[right]){
+            temp.push_back(arr[left]);
+            left++;
+        }
+        else {
+            temp.push_back(arr[right]);
+            inv_cnt += ( mid- left + 1);
+            right++;
+        }
+    }
+
+    while(left <= mid){
+        temp.push_back(arr[left]);
+        left++;
+    }
+
+    while(right<= last){
+        temp.push_back(arr[left]);
+        right++;
+    }
+    for(int i = start ; i <= last ; i++){
+        arr[i] = temp[i-start];
+    }
+    return inv_cnt;
+}
+
+
+int mergeSort( vector<int>& arr , int start , int last){
+    int cnt = 0 ;
+
+    if(start >= last){
+        return cnt;
+    }
+    int mid = ( start + last )/2;
+    cnt += mergeSort(arr,start,mid);
+    cnt += mergeSort(arr,mid+1,last);
+    cnt += merge(arr,start,last);
+
+    return cnt;
+}
+
+int numberOfInversion( vector<int>& arr , int n ){
+    return mergeSort( arr ,0, n-1);
+}
