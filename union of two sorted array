@@ -1,0 +1,59 @@
+// Brute method
+
+#include<bits/stdc++.h>
+vector < int > sortedArray(vector < int > a, vector < int > b) {
+    
+    int len1 = a.size();
+    int len2 = b.size();
+    set<int> pt;
+    for(int i = 0 ; i < len1;i++ ){
+        pt.insert(a[i]);
+    }
+    for(int i = 0 ; i < len2;i++ ){
+        pt.insert(b[i]);
+    }
+    vector<int>temp;
+    for(auto it : pt){
+        temp.push_back(it);
+    }
+    return temp;
+
+// Optimal method 
+
+#include<bits/stdc++.h>
+vector < int > sortedArray(vector < int > a, vector < int > b) {
+    vector<int>unionArr;
+    int len1 = a.size();
+    int len2 = b.size();
+    int i = 0 ;
+    int j = 0;
+    while( i < len1 && j < len2){
+        if (a[i] <= b[j]){
+            if(unionArr.size() == 0 || unionArr.back() != a[i] ){
+                unionArr.push_back(a[i]);
+            }
+            i++;
+        }
+        else{
+            if(unionArr.size() == 0 || unionArr.back() != b[j] ){
+                unionArr.push_back(b[j]);
+            }
+            j++;
+        }
+    }
+    while( i < len1){
+        if(unionArr.size() == 0 || unionArr.back() != a[i] ){
+            unionArr.push_back(a[i]);
+        }
+        i++;
+    }
+    while( j < len2 ){
+        if(unionArr.size() == 0 || unionArr.back() != b[j] ){
+            unionArr.push_back(b[j]);
+        }
+        j++;
+    }
+
+    return unionArr;
+}
+//complexity TC:O(m+n) and for returning ans the SC is O(n+m).
