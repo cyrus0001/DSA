@@ -1,0 +1,31 @@
+//  Array with every numbers appears 3 times 
+    int singleNumber(vector<int>& nums) {
+        set<int> st;
+        for(int i = 0 ; i< nums.size(); i++){
+            st.insert(nums[i]);
+        }
+        long sTsum = 0 ;
+        for(auto it : st){
+            sTsum += it;
+        }
+        long sum = 0 ;
+        for(int i = 0 ; i< nums.size();i++){
+            sum += nums[i];
+
+        }
+        int ans = (3*sTsum - sum)/2;
+
+        return ans;
+        
+    }
+//Complexity is O(n) and space complexity O(size of set).
+
+//Array with every  element appears twice 
+
+    int singleNumber(vector<int>& nums) {
+        int ans = 0 ;
+        for(int i = 0 ; i< nums.size();i++){
+            ans = ans^ nums[i];
+        }
+        return ans ;
+
