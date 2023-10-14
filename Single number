@@ -16,8 +16,27 @@
         int ans = (3*sTsum - sum)/2;
 
         return ans;
+    }
+
+//Method 2 
+   int singleNumber(vector<int>& nums) {
+        unordered_map<int,int>mp;
+        int n = nums.size();
+        int ans;
+
+        for(int i = 0 ; i < n ; i++){
+            mp[nums[i]]++;
+        }
+        for(auto it : mp){
+            if (it.second == 1){
+                ans = it.first;
+            }
+        }
+        return ans;
         
     }
+
+
 //Complexity is O(n) and space complexity O(size of set).
 
 //Array with every  element appears twice 
