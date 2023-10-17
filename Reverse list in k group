@@ -18,4 +18,4 @@
         return prev;
     } 
 
-//Complexity : TC -> O(2k) and SC -> O(1)
+//Complexity : TC -> O(n) and SC -> O(n)
