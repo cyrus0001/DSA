@@ -1,0 +1,65 @@
+//Method 1 
+
+bool detectloop(Node* head){
+    if (head == nullptr){
+       return true;
+    }
+  
+    map<Node*,bool>visited;
+    Node* temp = head;
+    while(temp !=nullptr){
+      if(visited[temp]==true){
+          return true;
+      }
+      visited[temp]=true;
+      temp = temp->next;
+   }
+    return false;
+
+}
+//Complexity: TC -> O(n) and SC -> O(n).
+
+
+ // Optimal solution:  
+
+Node* floydDetectloop(Node* head){
+   if (head == nullptr){
+       return bullptr;
+   }
+   Node* slow = head;
+   Node* fast = head;
+
+   while(slow != nullptr && fast != nullptr){
+       fast = fast -> next ;
+       if (fast != nullptr){
+           fast = fast -> next ;
+
+       }
+       slow = slow ->next;
+   }
+
+   if ( slow == fast ){
+      return slow ;
+   }
+   return nullptr;
+}
+
+bool detectloop(Node* head){
+     if (head == nullptr){
+        return true;
+     }
+  
+      Node* temp = floydDetectloop(head);
+      if (temp == head ){
+  
+         return true;
+      }
+      return false;
+
+}
+
+//Complexity : TC -> O(n) and SC -> O(1).
+
+
+
+ 
