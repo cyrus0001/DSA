@@ -1,0 +1,54 @@
+
+//For simply LL 
+
+Node* removeDuplicates (Node* head){
+   if (head == nullptr){
+     return nullptr;
+   }
+   Node* curr = head ;
+
+   while(curr != nullptr && curr ->next != nullptr){
+     if ( curr ->data == curr ->next -> data){
+       Node* nextNode = curr->next->next;
+       Node* deleteNode = curr ->next;
+       delete(deleteNode);
+       curr->next = nextNode;
+     }
+     else {
+        curr = curr ->next;
+     }
+  }
+   return head;
+}
+
+//Complexity : TC -> O(n) and SC -> O(1);
+
+
+//For dupliacte Linked List 
+
+Node* removeDuplicates (Node* head){
+   if (head == nullptr){
+     return nullptr;
+   }
+   Node* curr = head ;
+
+   while(curr != nullptr && curr ->next != nullptr){
+     if ( curr ->data == curr ->next -> data){
+         Node* nextNode = curr->next->next;
+         Node* deleteNode = curr ->next;
+         delete(deleteNode);
+         curr->next = nextNode;
+         if (nextNode != nullptr){
+           nextNode->prev = curr;
+         }
+     }
+     else {
+         curr = curr ->next;
+     }
+  }
+   return head;
+}
+
+//Complexity : TC -> O(n) and SC -> O(1).
+
+
