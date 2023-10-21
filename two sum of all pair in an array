@@ -1,0 +1,29 @@
+
+#include<bits/stdc++.h>
+vector<pair<int,int>> twoSum(vector<int>& arr, int target, int n)
+{
+	vector<pair<int,int>> result;
+	sort(arr.begin(),arr.end());
+	
+	int left = 0 ;
+	int right = n - 1;
+
+	while(left < right){
+		int currSum = arr[left]+ arr[right];
+		if(currSum == target){
+			result.push_back(make_pair(arr[left],arr[right]));
+			left++;
+			right --;
+		}
+		else if (currSum < target){
+			left++;
+		}
+		else{
+			right--;
+		}
+	}
+	return  result.empty() ? vector<pair<int, int>>{make_pair(-1, -1)} : result;
+
+ //Complexity : TC -> O(nlogn)  and SC -> O(n);
+
+ 
