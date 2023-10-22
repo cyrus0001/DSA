@@ -1,0 +1,29 @@
+
+    int longestConsecutive(vector<int>& nums) {
+        int n = nums.size();
+        if(n == 0){
+            return 0;
+        }
+        sort(nums.begin(),nums.end());
+        int lastSmll = INT_MIN;
+        int cnt = 0;
+        int longest = 1 ;
+
+        for(int i = 0 ; i < n ; i++){
+            if(nums[i]-1 == lastSmll){
+                cnt++;
+                lastSmll = nums[i];
+            }
+            else if (lastSmll != nums[i]){
+                cnt = 1;
+                lastSmll = nums[i];
+            }
+            longest = max (longest , cnt);
+        }
+        return longest;
+    }
+
+// Complexity : TC -> O(nlogn) and SC -> O(1).
+
+//Optimal will be do later.
+
