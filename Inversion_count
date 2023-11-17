@@ -1,6 +1,6 @@
 
 int merge(vector<int>& arr , int start , int last){
-    vector(int> temp;
+    vector<int> temp;
 
     int left = start;
     int mid = ( start + last )/2;
